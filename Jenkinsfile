@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh '''
                 for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do
-                  if curl --fail --silent http://localhost:3001/api/health; then
+                  if curl --fail --silent http://host.docker.internal:3001/api/health; then
                     exit 0
                   fi
                   sleep 2
@@ -49,7 +49,7 @@ pipeline {
 
         stage('Check Web') {
             steps {
-                sh 'curl --fail --silent http://localhost:5173'
+                sh 'curl --fail --silent http://host.docker.internal:5173'
             }
         }
     }
